@@ -32,7 +32,7 @@ const transformCatalogByCategory = (catalog) => {
   };
 
   catalog.forEach((item) => {
-    const title = item.title.toLowerCase();
+    const title = item.title;
 
     if (title.search(/плинтус\s/i) !== -1) {
       categories.plinth.cards.push(item);
