@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3 catalog__filter text-center">
-    <label for="catalogFilter" class="form-label">ПОИСК В КАТАЛОГЕ:</label>
+    <label for="catalogFilter" class="form-label">ПОИСК В КАТЕГОРИИ:</label>
     <input
       :value="filter"
       @input="$emit('update:filter', $event.target.value)"

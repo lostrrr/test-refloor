@@ -3,10 +3,10 @@
     <div class="container">
       <div class="catalog__wrapper">
         <h1 class="text-center mt-3">КАТАЛОГ ПРОДУКЦИИ</h1>
-        <TheCatalogFilter v-model:filter="filter" />
         <div class="row mt-3">
           <TheCategories :categories="categories" @selectCategory="select" />
         </div>
+        <TheCatalogFilter v-model:filter="filter" />
         <div class="row">
           <template v-for="card in filteredCategories" :key="card.id">
             <AppCard :card="card" />
