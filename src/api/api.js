@@ -11,29 +11,42 @@ const getCatalog = async () => {
   );
 };
 
+const getAllGoods = async () => {
+  return getResource(URL);
+};
+
 const transformCatalogByCategory = (catalog) => {
   const categories = {
-    laminate: [],
-    plinth: [],
-    overlay: [],
+    laminate: {
+      cards: [],
+      src: "laminate.png",
+      title: "Ламинат",
+    },
+    plinth: {
+      cards: [],
+      src: "plinth.png",
+      title: "Плинтус",
+    },
+    overlay: { cards: [], src: "overlay.png", title: "Подложки" },
+    allgoods: { showAll: true, src: "allgoods.png", title: "Все товары" },
   };
 
   catalog.forEach((item) => {
     const title = item.title.toLowerCase();
 
     if (title.search(/плинтус\s/i) !== -1) {
-      categories.plinth.push(item);
+      categories.plinth.cards.push(item);
     }
 
     if (title.search(/ламинат\s/i) !== -1) {
-      categories.laminate.push(item);
+      categories.laminate.cards.push(item);
     }
 
     if (title.search(/подложка\s/i) !== -1) {
-      categories.overlay.push(item);
+      categories.overlay.cards.push(item);
     }
   });
   return categories;
 };
 
-export { getCatalog };
+export { getCatalog, getAllGoods };

@@ -2,28 +2,9 @@
   <section class="catalog">
     <div class="container">
       <div class="catalog__wrapper">
-        <div>
-          <input
-            type="checkbox"
-            id="plinth"
-            value="plinth"
-            v-model="checkedItems"
-          />
-          <label for="plinth">Плинтус</label>
-          <input
-            type="checkbox"
-            id="laminate"
-            value="laminate"
-            v-model="checkedItems"
-          />
-          <label for="laminate">Ламинат</label>
-          <input
-            type="checkbox"
-            id="overlay"
-            value="overlay"
-            v-model="checkedItems"
-          />
-          <label for="overlay">Подложка</label>
+        <h1 class="text-center mt-3">КАТАЛОГ ПРОДУКЦИИ</h1>
+        <div class="row mt-3">
+          <TheCategories :categories="categories" @selectCategory="select" />
         </div>
         <div class="row">
           <template v-for="card in selectedCategory" :key="card.id">
@@ -37,26 +18,29 @@
 
 <script>
 import AppCard from "./AppCard.vue";
-import { getCatalog } from "@/api/api";
+import TheCategories from "./TheCategories.vue";
+import { getCatalog, getAllGoods } from "@/api/api";
 export default {
   name: "TheCatalog",
-  components: { AppCard },
+  components: { AppCard, TheCategories },
   data() {
     return {
       cards: [],
       categories: [],
-      checkedItems: [],
+      allGoods: [],
+      selectedCategory: [],
     };
   },
-  computed: {
-    selectedCategory() {
-      return this.checkedItems
-        .map((category) => this.categories[category])
-        .flat();
+  methods: {
+    select(category) {
+      category?.showAll
+        ? (this.selectedCategory = this.allGoods)
+        : (this.selectedCategory = category.cards);
     },
   },
   created() {
     getCatalog().then((categories) => (this.categories = categories));
+    getAllGoods().then((goods) => (this.allGoods = goods));
   },
 };
 </script>
