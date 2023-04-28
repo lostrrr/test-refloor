@@ -10,8 +10,7 @@ const getCatalog = async () => {
     transformCatalogByCategory(catalog)
   );
 };
-
-// Получение списка всех товаров 
+// Получение списка всех товаров
 
 const getAllGoods = async () => {
   return getResource(URL);
