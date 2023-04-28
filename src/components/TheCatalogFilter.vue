@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-3 catalog__filter text-center">
+  <div class="mt-4 mb-4 catalog__filter text-center">
     <label for="catalogFilter" class="form-label">ПОИСК В КАТЕГОРИИ:</label>
     <input
       :value="filter"
@@ -22,6 +22,4 @@ export default {
 };
 </script>
 
-<stylescoped>
-
-</stylescoped>
+<style scoped></style>

@@ -1,4 +1,4 @@
-# test-refloor
+# Test task for Refloor, author Naumov Vladimir
 
 ## Project setup
 ```

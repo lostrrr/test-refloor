@@ -21,7 +21,6 @@
 import AppCard from "./AppCard.vue";
 import TheCategories from "./TheCategories.vue";
 import TheCatalogFilter from "./TheCatalogFilter.vue";
-import { getCatalog, getAllGoods } from "@/api/api";
 export default {
   name: "TheCatalog",
   components: { AppCard, TheCategories, TheCatalogFilter },
@@ -29,12 +28,16 @@ export default {
     return {
       filter: "",
       cards: [],
-      categories: [],
-      allGoods: [],
       selectedCategory: [],
     };
   },
   computed: {
+    categories() {
+      return this.$store.state.categories;
+    },
+    allGoods() {
+      return this.$store.state.allGoods;
+    },
     loweredFilter() {
       return this.filter.toLowerCase();
     },
@@ -54,10 +57,6 @@ export default {
           ? this.allGoods
           : category.cards;
     },
-  },
-  created() {
-    getCatalog().then((categories) => (this.categories = categories));
-    getAllGoods().then((goods) => (this.allGoods = goods));
   },
 };
 </script>

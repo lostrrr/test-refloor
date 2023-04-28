@@ -11,9 +11,13 @@ const getCatalog = async () => {
   );
 };
 
+// Получение списка всех товаров 
+
 const getAllGoods = async () => {
   return getResource(URL);
 };
+
+// Функция для трансформации данных из API сервера, для разделения всего списка товаров по категориям
 
 const transformCatalogByCategory = (catalog) => {
   const categories = {

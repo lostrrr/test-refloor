@@ -2,6 +2,16 @@
   <router-view />
 </template>
 
+<script>
+export default {
+  name: "App",
+  created() {
+    this.$store.dispatch("fetchCategories");
+    this.$store.dispatch("fetchAllGoods");
+  },
+};
+</script>
+
 <style>
 * {
   margin: 0;
